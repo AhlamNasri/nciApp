@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Backgrounds */
+    --background: 0 0% 100%; /* White */
+    --foreground: 0 0% 9%; /* Almost black */
+
+    /* Cards */
+    --card: 0 0% 100%; /* White */
+    --card-foreground: 0 0% 9%;
+
+    /* Popover */
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 9%;
+
+    /* Primary - Burgundy */
+    --primary: 0 60% 35%; /* Burgundy */
+    --primary-foreground: 0 0% 100%; /* White text on burgundy */
+
+    /* Secondary - Dark Grey */
+    --secondary: 0 0% 20%; /* Dark grey */
+    --secondary-foreground: 0 0% 100%;
+
+    /* Muted - Light Grey */
+    --muted: 0 0% 96%; /* Very light grey */
+    --muted-foreground: 0 0% 45%; /* Medium grey */
+
+    /* Accent - Lighter Burgundy */
+    --accent: 0 50% 45%; /* Lighter burgundy for hover states */
+    --accent-foreground: 0 0% 100%;
+
+    /* Destructive */
+    --destructive: 0 84.2% 60.2%; /* Red for errors */
+    --destructive-foreground: 0 0% 100%;
+
+    /* Borders & Inputs */
+    --border: 0 0% 90%; /* Light grey */
+    --input: 0 0% 90%; /* Light grey */
+    --ring: 0 60% 35%; /* Burgundy focus ring */
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    /* Dark mode - Black background with burgundy accents */
+    --background: 0 0% 9%; /* Almost black */
+    --foreground: 0 0% 98%; /* White text */
+
+    --card: 0 0% 12%; /* Dark grey card */
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 12%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Primary - Burgundy (slightly lighter for dark mode) */
+    --primary: 0 65% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary - Medium Grey */
+    --secondary: 0 0% 18%;
+    --secondary-foreground: 0 0% 98%;
+
+    /* Muted - Dark Grey */
+    --muted: 0 0% 18%;
+    --muted-foreground: 0 0% 65%;
+
+    /* Accent */
+    --accent: 0 60% 40%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Destructive */
+    --destructive: 0 62.8% 50%;
+    --destructive-foreground: 0 0% 98%;
+
+    /* Borders & Inputs */
+    --border: 0 0% 20%; /* Dark grey */
+    --input: 0 0% 20%;
+    --ring: 0 65% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
