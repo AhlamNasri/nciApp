@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# nciApp
+
+A full-stack project management and team collaboration web application 
+with real-time chat built with Next.js and Node.js.
+
+## Tech Stack
+
+- **Frontend:** Next.js (React)
+- **Backend:** Node.js + Express
+- **Database:** MySQL
+- **Real-time:** Socket.io
+- **Auth:** JWT + bcrypt
+- **File uploads:** Multer
+
+## Features
+
+- User authentication (register/login)
+- Project creation and management
+- Team members & invitations
+- Real-time chat rooms with typing indicators
+- Messaging system
+- File sharing per project
 
 ## Getting Started
 
-First, run the development server:
+### 1. Clone the repository
+git clone https://github.com/AhlamNasri/nciApp.git
+cd nciApp
 
-```bash
+### 2. Backend setup
+cd backend
+npm install
+
+Create a `.env` file in the backend folder:
+DB_HOST=localhost
+DB_USER=your_mysql_username
+DB_PASS=your_mysql_password
+DB_NAME=your_database_name
+JWT_SECRET=your_secret_key
+PORT=5000
+
+node index.js
+
+### 3. Frontend setup
+cd frontend
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Usage
+- Backend runs on: http://localhost:5000
+- Frontend runs on: http://localhost:3000
+- Or use START.bat to launch both at once
