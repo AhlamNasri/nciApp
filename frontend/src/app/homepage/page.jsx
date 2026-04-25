@@ -13,8 +13,7 @@ import ProjectFiles from '../project/[id]/Projectfiles.jsx';
 import ProfilePage from './ProfilePage.jsx';
 import JoinProject from './JoinProject.jsx';
 
-const API_BASE_URL = 'http://localhost:5000/api';
-
+const API_URL = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000') + '/api/auth';
 export default function App() {
   const router = useRouter();
   const searchParams = useSearchParams();

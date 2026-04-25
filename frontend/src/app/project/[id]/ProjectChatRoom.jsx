@@ -6,8 +6,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Send, Loader2, AlertCircle, Smile, Paperclip } from 'lucide-react';
 import io from 'socket.io-client';
 
-const SOCKET_URL = 'http://localhost:5000';
-
+const SOCKET_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
 export default function ProjectChatRoom({ projectId, currentUserId, currentUserName }) {
   const [socket, setSocket] = useState(null);
   const [messages, setMessages] = useState([]);

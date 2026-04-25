@@ -7,8 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { ArrowLeft, Camera, Upload, X, Loader2, Mail, User, Shield, Calendar, Lock, Eye, EyeOff } from 'lucide-react';
 
-const API_BASE_URL = 'http://localhost:5000/api';
-
+const API_BASE_URL = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000') + '/api';
 export default function ProfilePage({
   userAvatar,
   userName,
