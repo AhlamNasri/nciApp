@@ -6,7 +6,8 @@ import { Button } from '@/components/ui/button';
 import { Loader2, CheckCircle, XCircle, ArrowLeft, Users } from 'lucide-react';
 import { authService } from '../utils/auth';
 
-const API_BASE_URL = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000') + '/api';
+const API_BASE_URL = 'http://localhost:5000/api';
+
 export default function JoinProject({ inviteCode, onBack, onSuccess }) {
   const router = useRouter();
   const [loading, setLoading] = useState(true);

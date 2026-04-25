@@ -5,7 +5,8 @@ import { useRouter } from 'next/navigation';
 import { Eye, EyeOff, Lock, Building2, AlertCircle, Loader2 } from 'lucide-react';
 import { authService } from './utils/auth';
 
-const API_URL = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000') + '/api/auth';
+const API_URL = 'http://localhost:5000/api/auth';
+
 export default function LoginPage() {
   const router = useRouter();
   const [formData, setFormData] = useState({
@@ -46,7 +47,7 @@ export default function LoginPage() {
     try {
       // Convert company_id to number since backend expects it as a number
       const payload = {
-        company_id: Number(formData.company_id),
+        company_id: formData.company_id,
         password: formData.password
       };
       console.log('Payload with company_id as number:', payload);

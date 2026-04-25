@@ -5,7 +5,8 @@ import { Eye, EyeOff, Lock, Building2, AlertCircle, Loader2 } from 'lucide-react
 import { useRouter } from 'next/navigation';
 import { authService } from '@/utils/auth';
 
-const API_URL = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000') + '/api/auth';
+const API_URL = 'http://localhost:5000/api/auth';
+
 export default function LoginPage() {
   const router = useRouter();
   const [formData, setFormData] = useState({

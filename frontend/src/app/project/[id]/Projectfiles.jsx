@@ -11,7 +11,8 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { authService } from '../../utils/auth';
 
-const API_BASE_URL = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000') + '/api';
+const API_BASE_URL = 'http://localhost:5000/api';
+
 // File type categories
 const FILE_CATEGORIES = {
   'Excel Files': {

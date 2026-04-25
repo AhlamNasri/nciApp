@@ -9,7 +9,8 @@ import { authService } from '../utils/auth';
 import { useRouter } from 'next/navigation';
 import ProjectChatRoom from '../project/[id]/ProjectChatRoom';
 
-const API_BASE_URL = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000') + '/api';
+const API_BASE_URL = 'http://localhost:5000/api';
+
 export default function MessagesPage() {
   const router = useRouter();
   const [projects, setProjects] = useState([]);
