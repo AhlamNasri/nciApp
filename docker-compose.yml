@@ -1,0 +1,63 @@
+version: "3.9"
+
+services:
+  # ── MySQL Database ──────────────────────────────────────────────────────────
+  db:
+    image: mysql:8.0
+    container_name: nciapp_db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: nciapp
+      MYSQL_USER: nciuser
+      MYSQL_PASSWORD: ncipassword
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-prootpassword"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  # ── Backend (Node/Express) ──────────────────────────────────────────────────
+  backend:
+    build:
+      context: ./backend
+      dockerfile: ../Dockerfile.backend
+    container_name: nciapp_backend
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DB_HOST: db
+      DB_USER: nciuser
+      DB_PASS: ncipassword
+      DB_NAME: nciapp
+      JWT_SECRET: supersecretjwtkey_changeme_in_production
+      PORT: 5000
+    ports:
+      - "5000:5000"
+    volumes:
+      - uploads_data:/app/uploads
+
+  # ── Frontend (Next.js) ─────────────────────────────────────────────────────
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: ../Dockerfile.frontend
+    container_name: nciapp_frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:5000
+    ports:
+      - "3000:3000"
+
+volumes:
+  db_data:
+  uploads_data:
