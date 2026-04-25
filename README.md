@@ -1,26 +1,35 @@
 # nciApp
 
-A full-stack project management and team collaboration web application with real-time chat built with Next.js and Node.js.
+**nciApp** is a full-stack team project management and collaboration web application built with **Next.js 15** (frontend) and **Express.js + Socket.io** (backend), backed by a **MySQL** database.
 
-## Tech Stack
+It enables organizations to manage projects, coordinate team members, share files, and communicate in real time — all from a single platform.
 
-- **Frontend:** Next.js (React)
-- **Backend:** Node.js + Express
-- **Database:** MySQL
-- **Real-time:** Socket.io
-- **Auth:** JWT + bcrypt
-- **File uploads:** Multer
+---
 
-## Features
+## ✨ Features
 
-- User authentication (register/login)
-- Project creation and management
-- Team members & invitations
-- Real-time chat rooms with typing indicators
-- Messaging system
-- File sharing per project
+- 🔐 **Authentication** — JWT-based login using a company ID, with role-based access control (admin vs. team member)
+- 📁 **Project Management** — Create, view, and manage projects with images, descriptions, dates, and status tracking
+- 👥 **Team Members** — Invite collaborators via unique invite codes/links and manage project membership
+- 💬 **Real-Time Chat** — Per-project chat rooms powered by Socket.io, with typing indicators and read receipts
+- 📂 **File Sharing** — Upload and manage project files within each project workspace
+- 👤 **User Profiles** — View and edit personal profile information and avatars
+- 📬 **Direct Messaging** — User-to-user messaging system
 
-## Getting Started
+---
+
+## 🛠️ Tech Stack
+
+| Layer      | Technology                                    |
+|------------|-----------------------------------------------|
+| Frontend   | Next.js 15, React 19, Tailwind CSS, shadcn/ui |
+| Backend    | Express.js 5, Socket.io, JWT, Multer          |
+| Database   | MySQL 2                                       |
+| Real-time  | Socket.io (WebSockets)                        |
+
+---
+
+## 🚀 Getting Started
 
 ### 1. Clone the repository
 
@@ -61,11 +70,41 @@ npm install
 npm run dev
 ```
 
-## Usage
+---
+
+## 🌐 Local URLs
 
 | Service  | URL                   |
 |----------|-----------------------|
-| Backend  | http://localhost:5000 |
 | Frontend | http://localhost:3000 |
+| Backend  | http://localhost:5000 |
 
-> **Tip:** Use `START.bat` to launch both servers at once.
+> **Tip (Windows):** Use `START.bat` at the root to launch both servers at once.
+
+---
+
+## 📁 Project Structure
+
+```
+nciApp/
+├── backend/
+│   ├── routes/
+│   │   ├── auth.js           # JWT login & token verification
+│   │   ├── projects.js       # Project CRUD & image uploads
+│   │   ├── projectMembers.js # Member management
+│   │   ├── projectFiles.js   # File sharing per project
+│   │   ├── chatRooms.js      # Chat room management
+│   │   ├── messages.js       # Direct messaging
+│   │   ├── users.js          # User profiles
+│   │   └── invite_routes.js  # Invite link handling
+│   ├── db.js                 # MySQL connection pool
+│   └── index.js              # Express + Socket.io server
+├── frontend/
+│   └── src/app/
+│       ├── homepage/         # Main dashboard & profile
+│       ├── project/[id]/     # Project detail, files & chat
+│       ├── messages/         # Direct messaging UI
+│       └── login/            # Login page
+├── START.bat                 # Windows quick-start script
+└── README.md
+```
