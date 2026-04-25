@@ -55,12 +55,11 @@ export default function App() {
     // Fetch user profile from database
     fetchUserProfile(userId);
   }, [searchParams]);
-
-  useEffect(() => {
-    if (currentUserId) {
-      fetchProjects();
-    }
-  }, [currentUserId]);
+useEffect(() => {
+  if (currentUserId) {
+    fetchProjects();
+  }
+}, [currentUserId, isTeamMember]);  // ✅ re-runs when isTeamMember is set
 
   const fetchUserProfile = async (userId) => {
     try {
