@@ -6,8 +6,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { authService } from '../../utils/auth';
-
-const API_BASE_URL = 'http://localhost:5000/api';
+import { API_BASE_URL, BACKEND_URL } from '../../config';
 
 const ProjectDetail = ({ projectId, onClose, onNavigateToFiles, isTeamMember }) => {
   const [project, setProject] = useState(null);
@@ -285,7 +284,7 @@ const ProjectDetail = ({ projectId, onClose, onNavigateToFiles, isTeamMember }) 
             {project.image && (
               <div className="relative h-48 overflow-hidden">
                 <img
-                  src={`http://localhost:5000${project.image}`}
+                  src={`${BACKEND_URL}${project.image}`}
                   alt={project.title}
                   className="w-full h-full object-cover"
                 />

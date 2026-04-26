@@ -10,8 +10,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { authService } from '../../utils/auth';
-
-const API_BASE_URL = 'http://localhost:5000/api';
+import { API_BASE_URL, BACKEND_URL } from '../../config';
 
 // File type categories
 const FILE_CATEGORIES = {
@@ -304,7 +303,7 @@ const ProjectFiles = ({ projectId, onClose, onBackToDetails, isTeamMember }) => 
   };
 
   const handleViewFile = (filePath) => {
-    const fileUrl = `http://localhost:5000/${filePath}`;
+    const fileUrl = `${BACKEND_URL}/${filePath}`;
     window.open(fileUrl, '_blank');
   };
 
@@ -313,7 +312,7 @@ const ProjectFiles = ({ projectId, onClose, onBackToDetails, isTeamMember }) => 
     e.preventDefault();
 
     try {
-      const fileUrl = `http://localhost:5000/${filePath}`;
+      const fileUrl = `${BACKEND_URL}/${filePath}`;
       const response = await fetch(fileUrl);
       const blob = await response.blob();
       const url = window.URL.createObjectURL(blob);

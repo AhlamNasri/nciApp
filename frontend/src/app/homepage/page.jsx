@@ -12,8 +12,7 @@ import ProjectDetail from '../project/[id]/Projectdetail.jsx';
 import ProjectFiles from '../project/[id]/Projectfiles.jsx';
 import ProfilePage from './ProfilePage.jsx';
 import JoinProject from './JoinProject.jsx';
-
-const API_BASE_URL = 'http://localhost:5000/api';
+import { API_BASE_URL, BACKEND_URL } from '../config';
 
 export default function App() {
   const router = useRouter();
@@ -329,7 +328,7 @@ function HomePage({
     const fetchUnreadCount = async () => {
       try {
         const res = await fetch(
-          `http://localhost:5000/api/messages/unread-count-combined?userId=${userId}`
+          `${API_BASE_URL}/messages/unread-count-combined?userId=${userId}`
         );
 
         if (!res.ok) {
@@ -399,7 +398,7 @@ function HomePage({
 
       if (data.success) {
         // Update avatar URL with full server path
-        const fullAvatarUrl = `http://localhost:5000${data.avatarUrl}`;
+        const fullAvatarUrl = `${BACKEND_URL}${data.avatarUrl}`;
         onAvatarUpdate(fullAvatarUrl);
         setShowAvatarUpload(false);
       } else {
@@ -733,7 +732,7 @@ function HomePage({
                   >
                     <div className="relative h-40 overflow-hidden bg-muted">
                       <img
-                        src={`http://localhost:5000${project.image}`}
+                        src={`${BACKEND_URL}${project.image}`}
                         alt={project.title}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
@@ -1170,7 +1169,7 @@ function Step2({ formData, setFormData }) {
       const formDataUpload = new FormData();
       formDataUpload.append('image', file);
 
-      const response = await fetch('http://localhost:5000/api/upload-image', {
+      const response = await fetch(`${API_BASE_URL}/upload-image`, {
         method: 'POST',
         body: formDataUpload
       });
@@ -1204,7 +1203,7 @@ function Step2({ formData, setFormData }) {
       {formData.image && (
         <div className="relative rounded-lg overflow-hidden border border-border">
           <img
-            src={`http://localhost:5000${formData.image}`}
+            src={`${BACKEND_URL}${formData.image}`}
             alt="Preview"
             className="w-full h-48 object-cover"
           />

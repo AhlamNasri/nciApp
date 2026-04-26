@@ -5,8 +5,9 @@ import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Send, Loader2, AlertCircle, Smile, Paperclip } from 'lucide-react';
 import io from 'socket.io-client';
+import { API_BASE_URL, BACKEND_URL } from '../../config';
 
-const SOCKET_URL = 'http://localhost:5000';
+const SOCKET_URL = BACKEND_URL;
 
 export default function ProjectChatRoom({ projectId, currentUserId, currentUserName }) {
   const [socket, setSocket] = useState(null);
@@ -36,7 +37,7 @@ export default function ProjectChatRoom({ projectId, currentUserId, currentUserN
       try {
         setLoading(true);
 
-        const roomResponse = await fetch(`http://localhost:5000/api/projects/${projectId}/chat-room`);
+        const roomResponse = await fetch(`${API_BASE_URL}/projects/${projectId}/chat-room`);
         const roomData = await roomResponse.json();
 
         if (!roomData.success) {
@@ -46,7 +47,7 @@ export default function ProjectChatRoom({ projectId, currentUserId, currentUserN
         const fetchedRoomId = roomData.data.id;
         setRoomId(fetchedRoomId);
 
-        const messagesResponse = await fetch(`http://localhost:5000/api/chat-rooms/${fetchedRoomId}/messages`);
+        const messagesResponse = await fetch(`${API_BASE_URL}/chat-rooms/${fetchedRoomId}/messages`);
         const messagesData = await messagesResponse.json();
 
         if (messagesData.success) {

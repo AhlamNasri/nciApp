@@ -21,6 +21,7 @@ CREATE TABLE IF NOT EXISTS projects (
   image_url VARCHAR(500),
   start_date DATE,
   end_date DATE,
+  status VARCHAR(50) NOT NULL DEFAULT 'ongoing',
   creator_id INT,
   invite_code VARCHAR(100) UNIQUE,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

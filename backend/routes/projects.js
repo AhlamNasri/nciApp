@@ -391,10 +391,10 @@ router.post('/projects', async (req, res) => {
       }
     }
 
-    // ✅ Insert project WITH invite_code
+    // ✅ Insert project WITH invite_code and status
     const query = `
-      INSERT INTO projects (title, description, image_url, start_date, end_date, creator_id, invite_code)
-      VALUES (?, ?, ?, ?, ?, ?, ?)
+      INSERT INTO projects (title, description, image_url, start_date, end_date, status, creator_id, invite_code)
+      VALUES (?, ?, ?, ?, ?, 'ongoing', ?, ?)
     `;
 
     const [result] = await db.query(query, [

@@ -5,8 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Loader2, CheckCircle, XCircle, ArrowLeft, Users } from 'lucide-react';
 import { authService } from '../utils/auth';
-
-const API_BASE_URL = 'http://localhost:5000/api';
+import { API_BASE_URL, BACKEND_URL } from '../config';
 
 export default function JoinProject({ inviteCode, onBack, onSuccess }) {
   const router = useRouter();
@@ -165,7 +164,7 @@ export default function JoinProject({ inviteCode, onBack, onSuccess }) {
                   {project.image && (
                     <div className="relative h-32 rounded-lg overflow-hidden bg-muted">
                       <img
-                        src={`http://localhost:5000${project.image}`}
+                        src={`${BACKEND_URL}${project.image}`}
                         alt={project.title}
                         className="w-full h-full object-cover"
                       />

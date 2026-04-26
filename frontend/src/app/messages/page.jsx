@@ -8,8 +8,7 @@ import { ArrowLeft, Loader2, MessageSquare, Users as UsersIcon, Search, MoreVert
 import { authService } from '../utils/auth';
 import { useRouter } from 'next/navigation';
 import ProjectChatRoom from '../project/[id]/ProjectChatRoom';
-
-const API_BASE_URL = 'http://localhost:5000/api';
+import { API_BASE_URL, BACKEND_URL } from '../config';
 
 export default function MessagesPage() {
   const router = useRouter();
@@ -172,7 +171,7 @@ export default function MessagesPage() {
                         <div className="flex items-start gap-3">
                           <div className="relative flex-shrink-0">
                             <Avatar className="h-12 w-12 border-2 border-background shadow-md">
-                              <AvatarImage src={`http://localhost:5000${project.image}`} />
+                              <AvatarImage src={`${BACKEND_URL}${project.image}`} />
                               <AvatarFallback className="bg-primary text-primary-foreground">
                                 {project.title[0]}
                               </AvatarFallback>
@@ -211,7 +210,7 @@ export default function MessagesPage() {
                 <div className="bg-card/80 backdrop-blur-xl border-b border-border/50 px-6 py-4 flex items-center justify-between flex-shrink-0 shadow-sm">
                   <div className="flex items-center gap-3">
                     <Avatar className="h-10 w-10 border-2 border-background shadow-md">
-                      <AvatarImage src={`http://localhost:5000${selectedProject.image}`} />
+                      <AvatarImage src={`${BACKEND_URL}${selectedProject.image}`} />
                       <AvatarFallback className="bg-primary text-primary-foreground">
                         {selectedProject.title[0]}
                       </AvatarFallback>

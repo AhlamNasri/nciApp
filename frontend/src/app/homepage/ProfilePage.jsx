@@ -6,8 +6,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { ArrowLeft, Camera, Upload, X, Loader2, Mail, User, Shield, Calendar, Lock, Eye, EyeOff } from 'lucide-react';
-
-const API_BASE_URL = 'http://localhost:5000/api';
+import { API_BASE_URL, BACKEND_URL } from '../config';
 
 export default function ProfilePage({
   userAvatar,
@@ -159,7 +158,7 @@ export default function ProfilePage({
       const data = await response.json();
 
       if (data.success) {
-        const fullAvatarUrl = `http://localhost:5000${data.avatarUrl}`;
+        const fullAvatarUrl = `${BACKEND_URL}${data.avatarUrl}`;
         onAvatarUpdate(fullAvatarUrl);
         setShowAvatarUpload(false);
       } else {
