@@ -121,4 +121,4 @@ CREATE TABLE IF NOT EXISTS document_visibility (
 
 -- Demo user (company_id: DEMO001, password: demo123)
 INSERT IGNORE INTO users (name, email, password, company_id, role_id)
-VALUES ('Demo User', 'demo@nciapp.com', 'demo123', 'DEMO001', 1);
+VALUES ('Demo User', 'demo@nciapp.com', '$2b$10$QUIiM2mhAgFLxdeE0ZKUle4gXFfwSsgisXrE1.29M.Fz4wK8jL8Ry', 'DEMO001', 1);
